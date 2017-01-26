@@ -20,13 +20,6 @@ public class FOW_Effect : MonoBehaviour
     RenderTexture groundTex;
     RenderTexture minimapPing;
 
-    //public RenderTexture _fowTex;
-    //public RenderTexture _interactivesTex;
-    //public RenderTexture _silhouettesTex;
-    //public RenderTexture _environmentTex;
-    //public RenderTexture _groundTex;
-    //public RenderTexture _minimapPing;
-
     public bool useSilhouette = true;
     public Color silhouetteColor;
     public bool useShadows = true;
@@ -101,40 +94,30 @@ public class FOW_Effect : MonoBehaviour
         layerCam.cullingMask = 1 << LayerMask.NameToLayer("Interactives") | 1 << LayerMask.NameToLayer("Characters") | 1 << LayerMask.NameToLayer("Environment") | 1 << LayerMask.NameToLayer("UnbreakableEnvironment");
         layerCam.targetTexture = interactivesTex;
         layerCam.Render();
-        //layerCam.targetTexture = _interactivesTex;
-        //layerCam.Render();
 
         // Change layer mask and render to specific render texture
         // Visible fog area
         layerCam.cullingMask = 1 << LayerMask.NameToLayer("Characters");
         layerCam.targetTexture = silhouettesTex;
         layerCam.Render();
-        //layerCam.targetTexture = _silhouettesTex;
-        //layerCam.Render();
 
         // Change layer mask and render to specific render texture
         // Visible fog area
         layerCam.cullingMask = 1 << LayerMask.NameToLayer("Ground");
         layerCam.targetTexture = groundTex;
         layerCam.Render();
-        //layerCam.targetTexture = _groundTex;
-        //layerCam.Render();
 
         // Change layer mask and render to specific render texture
         // Blocks
         layerCam.cullingMask = 1 << LayerMask.NameToLayer("Environment") | 1 << LayerMask.NameToLayer("UnbreakableEnvironment") | 1 << LayerMask.NameToLayer("Default");
         layerCam.targetTexture = environmentTex;
         layerCam.Render();
-        //layerCam.targetTexture = _environmentTex;
-        //layerCam.Render();
 
         // Change layer mask and render to specific render texture
         // Fog texture overlay
         layerCam.cullingMask = 1 << LayerMask.NameToLayer("FogOfWar");
         layerCam.targetTexture = fowTex;
         layerCam.Render();
-        //layerCam.targetTexture = _fowTex;
-        //layerCam.Render();
 
         // http://answers.unity3d.com/questions/799941/blit-camera-targettexture-to-screen.html
 
@@ -163,7 +146,6 @@ public class FOW_Effect : MonoBehaviour
 
             if (Screen.width > Screen.height) // If screen width is greater than screen height
             {
-                //resY = (int)camera.orthographicSize * 64; // Set Y-resolution according to camera zoom (standard zoom 1=64 pixels wide/high)
                 // Set correct resolution according to zoomOut on camera
                 resY = screenResolution;
                 if (resY >= 1024) // Failsafe in case camera orthographic size goes above 16 (which shouldn't happen)
@@ -172,7 +154,6 @@ public class FOW_Effect : MonoBehaviour
             }
             else //  Else if screen height is greater than screen width
             {
-                //resX = (int)camera.orthographicSize * 64; // Set X-resolution according to camera zoom (standard zoom 1=64 pixels wide/high)
                 resX = screenResolution;
                 if (resX >= 1024) // Failsafe in case camera orthographic size goes above 16 (which shouldn't happen)
                     resX = 1024;
@@ -211,8 +192,3 @@ public class FOW_Effect : MonoBehaviour
         }
     }
 }
-
-
-// lägg till ground i environmentlagret?
-// varför fungerar inte shadern till gamet? rendererar inte ground eller?
-// kolla FOW shader

@@ -35,7 +35,6 @@ public class FogOfWar : MonoBehaviour {
 		textureFOW.filterMode = filterFOW;
 
 		// Move FOW lower left corner to (0,0,?)
-		//transform.position = new Vector3((resFOWX / 2), (resFOWY / 2), transform.position.z) + shiftPos;
         transform.position = Vector3.zero + shiftPos;
         transform.localScale = new Vector3(100, 100, 1) / blocksPerUnit;
 		transform.rotation = new Quaternion(0, 0, 0, 0);
